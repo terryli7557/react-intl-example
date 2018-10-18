@@ -13,18 +13,22 @@ import zh from "react-intl/locale-data/zh";
 import de from "react-intl/locale-data/de";
 
 
+// NODE_ENV=development npx extract-messages -l=de,zh -o resources/locales -d en --flat false 'src/**/!(*.test).js'
+
+
 addLocaleData([...zh, ...en, ...de]);
 
-const messages = {
-    'en-US': {welcome: `Hello {name}, you have {count, number} {count, plural, one {message} other {messages}}`},
-    zh: {welcome: `你好 {name}, 你有 {count} 条消息`},
-    de: {
-        welcome: `
-    Hallo {name}, Sie haben {count, number} {count, plural, one {Nachricht} other {Nachrichten}}`
-    }
+// const messages = {
+//     'en-US': {welcome: `Hello {name}, you have {count, number} {count, plural, one {message} other {messages}}`},
+//     zh: {welcome: `你好 {name}, 你有 {count} 条消息`},
+//     de: {
+//         welcome: `
+//     Hallo {name}, Sie haben {count, number} {count, plural, one {Nachricht} other {Nachrichten}}`
+//     }
+//
+// };
 
-};
-
+const messages = {};
 const TimezoneRadio = ({timezone, handleOnChange, currentValue}) => (
     <>
         <input
