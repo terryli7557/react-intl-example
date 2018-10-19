@@ -11,7 +11,7 @@ import {
 import zh from "react-intl/locale-data/zh";
 import de from "react-intl/locale-data/de";
 import messages_zh from './resources/locales/zh';
-import messages_de from './resources/locales/zh';
+import messages_de from './resources/locales/de';
 
 
 addLocaleData([...zh, ...de]);
