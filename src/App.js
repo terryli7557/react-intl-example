@@ -8,18 +8,13 @@ import {
     addLocaleData
 } from "react-intl";
 
-import zh from "react-intl/locale-data/zh";
-import de from "react-intl/locale-data/de";
-import messages_zh from './resources/locales/zh';
-import messages_de from './resources/locales/de';
+import {DatePicker, LocaleProvider} from 'antd';
+import "antd/dist/antd.css";
 
+import {localeData, getAntdLocale, getMessagesByLocale} from './locales';
 
-addLocaleData([...zh, ...de]);
+addLocaleData(localeData);
 
-const messages = {
-    zh: messages_zh,
-    de: messages_de
-};
 const TimezoneRadio = ({timezone, handleOnChange, currentValue}) => (
     <>
         <input
@@ -31,6 +26,7 @@ const TimezoneRadio = ({timezone, handleOnChange, currentValue}) => (
             onChange={handleOnChange}
         />
         <label htmlFor={timezone}>{timezone}</label>
+        <br/>
     </>
 );
 const LanguageRadio = ({lang, currentValue, handleOnChange}) => (
@@ -44,6 +40,7 @@ const LanguageRadio = ({lang, currentValue, handleOnChange}) => (
             onChange={handleOnChange}
         />
         <label htmlFor={lang}>{lang}</label>
+        <br/>
     </>
 );
 
@@ -62,7 +59,7 @@ const MessageComponent = ({name, count}) => (
         <div>
             <FormattedMessage
                 id="warning"
-                defaultMessage={`This is a warning`}
+                defaultMessage={`This is how I spell colour`}
                 values={{name}}
             />
         </div>
@@ -140,34 +137,42 @@ class App extends Component {
         const langs = ['en-AU', 'en-US', 'de', 'zh'];
         const timezones = ['Australia/Sydney', 'Asia/Shanghai', 'America/New_York'];
         return (
-            <IntlProvider
-                locale={this.state.locale}
-                defaultLocale="en-AU"
-                messages={messages[this.state.locale]}
-                timeZone={this.state.timezone}>
-                <div>
-                    <div>
-                        {langs.map((lang, index) => (
-                            <LanguageRadio lang={lang} handleOnChange={this.setLang} key={index}
-                                           currentValue={this.state.locale}/>
-                        ))}
-                    </div>
-                    <br/>
-                    <div>
-                        {timezones.map((timezone, index) => (
-                            <TimezoneRadio timezone={timezone} handleOnChange={this.setTimezone}
-                                           key={index}
-                                           currentValue={this.state.timezone}/>
-                        ))}
-                    </div>
-                    <br/>
+            <div style={{margin: '10px'}}>
+                <LocaleProvider locale={getAntdLocale(this.state.locale)}>
+                    <IntlProvider
+                        locale={this.state.locale}
+                        defaultLocale="en-AU"
+                        messages={getMessagesByLocale(this.state.locale)}
+                        timeZone={this.state.timezone}>
+                        <div>
+                            <div>
+                                {langs.map((lang, index) => (
+                                    <LanguageRadio lang={lang} handleOnChange={this.setLang} key={index}
+                                                   currentValue={this.state.locale}/>
+                                ))}
+                            </div>
+                            <br/>
+                            <div>
+                                {timezones.map((timezone, index) => (
+                                    <TimezoneRadio timezone={timezone} handleOnChange={this.setTimezone}
+                                                   key={index}
+                                                   currentValue={this.state.timezone}/>
+                                ))}
+                            </div>
+                            <br/>
 
-                    {this.state.users.map((user, index) => (
-                        <MessageComponent key={index} name={user.name} count={user.count}/>
+                            {this.state.users.map((user, index) => (
+                                <MessageComponent key={index} name={user.name} count={user.count}/>
 
-                    ))}
-                </div>
-            </IntlProvider>
+                            ))}
+
+
+                            <div><DatePicker/></div>
+                        </div>
+
+                    </IntlProvider>
+                </LocaleProvider>
+            </div>
         );
     }
 }

@@ -1,0 +1,4 @@
+{
+  "warning": "This is how I spell color",
+  "welcome": "Hello {name}, you have {count, number} {count, plural,one {message} other {messages}}"
+}

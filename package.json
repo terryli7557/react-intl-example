@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.10.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-intl": "^2.7.1",
@@ -13,7 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "i18n": "NODE_ENV=development extract-messages -l=de,zh -o src/resources/locales -d en --flat false 'src/**/!(*.test).js'"
+    "i18n": "NODE_ENV=development extract-messages -l=de,zh, en-US -o src/locales/messages -d en --flat false 'src/**/!(*.test).js'"
   },
   "eslintConfig": {
     "extends": "react-app"

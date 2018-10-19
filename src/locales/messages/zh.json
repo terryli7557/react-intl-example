@@ -1,4 +1,4 @@
 {
-  "warning": "这是一条警告消息",
+  "warning": "这是一条消息",
   "welcome": "你好 {name}, 你有 {count} 条消息"
 }
