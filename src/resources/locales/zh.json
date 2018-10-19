@@ -1,3 +1,4 @@
 {
-  "welcome": "你好 {name}, 你有 {count} 条消息"
+  "welcome": "你好 {name}, 你有 {count} 条消息",
+  "greeting": ""
 }

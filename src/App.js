@@ -8,27 +8,18 @@ import {
     addLocaleData
 } from "react-intl";
 
-import en from "react-intl/locale-data/en";
 import zh from "react-intl/locale-data/zh";
 import de from "react-intl/locale-data/de";
+import messages_zh from './resources/locales/zh';
+import messages_de from './resources/locales/zh';
 
 
-// NODE_ENV=development npx extract-messages -l=de,zh -o resources/locales -d en --flat false 'src/**/!(*.test).js'
+addLocaleData([...zh, ...de]);
 
-
-addLocaleData([...zh, ...en, ...de]);
-
-// const messages = {
-//     'en-US': {welcome: `Hello {name}, you have {count, number} {count, plural, one {message} other {messages}}`},
-//     zh: {welcome: `你好 {name}, 你有 {count} 条消息`},
-//     de: {
-//         welcome: `
-//     Hallo {name}, Sie haben {count, number} {count, plural, one {Nachricht} other {Nachrichten}}`
-//     }
-//
-// };
-
-const messages = {};
+const messages = {
+    zh: messages_zh,
+    de: messages_de
+};
 const TimezoneRadio = ({timezone, handleOnChange, currentValue}) => (
     <>
         <input
@@ -66,6 +57,13 @@ const MessageComponent = ({name, count}) => (
                     }`}
             values={{name: <b>{name}</b>, count}}
         />
+        <div>
+            <FormattedMessage
+                id="warning"
+                defaultMessage={`This is a warning`}
+                values={{name}}
+            />
+        </div>
         <div>
             <FormattedDate
                 value={Date.now()}

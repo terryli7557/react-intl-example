@@ -1,3 +1,4 @@
 {
-  "welcome": "Hallo {name}, Sie haben {count, number} {count, plural, one {Nachricht} other {Nachrichten}}"
+  "welcome": "Hallo {name}, Sie haben {count, number} {count, plural, one {Nachricht} other {Nachrichten}}",
+  "greeting": ""
 }
