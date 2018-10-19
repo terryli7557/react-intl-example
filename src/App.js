@@ -49,6 +49,8 @@ const LanguageRadio = ({lang, currentValue, handleOnChange}) => (
 
 const MessageComponent = ({name, count}) => (
     <>
+        <div>===========</div>
+        <br/>
         <FormattedMessage
             id="welcome"
             defaultMessage={`Hello {name}, you have {count, number} {count, plural,
@@ -64,6 +66,7 @@ const MessageComponent = ({name, count}) => (
                 values={{name}}
             />
         </div>
+        <br/>
         <div>
             <FormattedDate
                 value={Date.now()}
@@ -77,12 +80,14 @@ const MessageComponent = ({name, count}) => (
                 weekday="long"
             />
             <br/>
+
             <FormattedDate
                 value={Date.now()}
                 year="numeric"
                 month="long"
                 day="numeric"
             />
+            <br/>
             <br/>
             <FormattedTime
                 value={Date.now()}
@@ -93,11 +98,13 @@ const MessageComponent = ({name, count}) => (
                 value={Date.now()}
             />
             <br/>
+            <br/>
             <FormattedNumber
                 value="1000"
                 style="currency"
                 currency="AUD"
             />
+            <br/>
             <br/>
         </div>
     </>
@@ -157,6 +164,7 @@ class App extends Component {
 
                     {this.state.users.map((user, index) => (
                         <MessageComponent key={index} name={user.name} count={user.count}/>
+
                     ))}
                 </div>
             </IntlProvider>
